@@ -1,0 +1,99 @@
+.list-infinite-container {
+  overflow: auto;
+  height: 500px;
+}
+
+/* >>>> Another changes made here 15/05/2019 <<<<<< */
+.alignCenter {
+  text-align: center !important;
+}
+
+.filter-btn {
+  margin-bottom: 10px;
+}
+
+.ant-menu-inline-collapsed {
+  width: 64px;
+}
+
+.selected-voucher-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.ant-menu-inline-collapsed > .ant-menu-item,
+.ant-menu-inline-collapsed
+  > .ant-menu-item-group
+  > .ant-menu-item-group-list
+  > .ant-menu-item,
+.ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title {
+  left: 0;
+  text-overflow: clip;
+  padding: 0 24px !important;
+}
+
+.ant-menu-inline-collapsed
+  > .ant-menu-item-group
+  > .ant-menu-item-group-list
+  > .ant-menu-item:after,
+.ant-menu-inline-collapsed > .ant-menu-item:after,
+.ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title:after {
+  display: none;
+}
+
+.ant-menu-inline-collapsed
+  > .ant-menu-item-group
+  > .ant-menu-item-group-list
+  > .ant-menu-item
+  .anticon,
+.ant-menu-inline-collapsed > .ant-menu-item .anticon,
+.ant-menu-inline-collapsed
+  > .ant-menu-submenu
+  > .ant-menu-submenu-title
+  .anticon {
+  font-size: 16px;
+  line-height: 42px;
+  margin: 0;
+}
+
+.ant-menu-inline-collapsed
+  > .ant-menu-item-group
+  > .ant-menu-item-group-list
+  > .ant-menu-item
+  .anticon
+  + span,
+.ant-menu-inline-collapsed > .ant-menu-item .anticon + span,
+.ant-menu-inline-collapsed
+  > .ant-menu-submenu
+  > .ant-menu-submenu-title
+  .anticon
+  + span {
+  max-width: 0;
+  display: inline-block;
+  opacity: 0;
+}
+
+.break-all {
+  word-wrap: break-word;
+}
+
+.dropbox {
+  height: 180px;
+  line-height: 1.5;
+}
+
+.drawer-bottom-layout {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  border-top: 2px solid #ffcc66;
+  padding: 10px 16px;
+  background: #fff;
+  text-align: right;
+}
+
+.ant-table-row-expand-icon-cell {
+  width: 1% !important;
+}

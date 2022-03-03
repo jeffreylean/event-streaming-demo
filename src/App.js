@@ -1,23 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import { Row, Typography } from "antd";
+import "./App.less";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Row justify="center" align="middle" style={{ minHeight: "100vh" }}>
+        <Typography.Text type="danger" strong style={{ fontSize: "50px" }}>
+          Event tracking test platform
+        </Typography.Text>
+      </Row>
     </div>
   );
 }
