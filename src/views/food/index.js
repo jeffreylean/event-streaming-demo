@@ -1,7 +1,32 @@
 import { Card, Input, Row, Space } from "antd";
+import {
+  EnhancedEcommercePlugin,
+  trackEnhancedEcommerceAction,
+  addEnhancedEcommerceProductContext,
+  addEnhancedEcommerceActionContext
+} from "@snowplow/browser-plugin-enhanced-ecommerce";
+import { newTracker, trackPageView } from "@snowplow/browser-tracker";
+import { useNavigate } from "react-router-dom";
+import {
+  GeolocationPlugin,
+  enableGeolocationContext
+} from "@snowplow/browser-plugin-geolocation";
+
+newTracker("ap1", "http://127.0.0.1:8080", {
+  appId: "food",
+  connectionTimeout: 100000,
+  stateStorageStrategy: "none",
+  plugins: [EnhancedEcommercePlugin(), GeolocationPlugin()]
+});
+enableGeolocationContext();
+
+trackPageView({
+  title: "Food Page"
+});
 
 const Food = () => {
   const { Meta } = Card;
+  const nav = useNavigate();
 
   return (
     <>
@@ -22,15 +47,27 @@ const Food = () => {
               />
             }
             style={{ width: 240, height: 300 }}
+            onClick={() => {
+              trackEnhancedEcommerceAction({
+                action: "click"
+              });
+              nav(`view/mcd`);
+            }}
           >
             <Meta title="Mc Donald" description="I'm lovin it!" />
           </Card>
           <Card
             hoverable
             cover={
-              <img src={require("../../assets/image/kfc.png")} alt="food" />
+              <img src={require("../../assets/image/kfc/kfc.png")} alt="food" />
             }
             style={{ width: 240, height: 300 }}
+            onClick={() => {
+              trackEnhancedEcommerceAction({
+                action: "click"
+              });
+              nav(`view/kfc`);
+            }}
           >
             <Meta title="KFC" description="Finger lickin good" />
           </Card>

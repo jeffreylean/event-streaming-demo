@@ -7,6 +7,7 @@ import {
 } from "@ant-design/icons";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import logo from "../../logo.svg";
 
 const Nav = () => {
   const [current, setCurrent] = useState("");
@@ -30,12 +31,21 @@ const Nav = () => {
       mode="horizontal"
       style={{
         position: "relative",
-        display: "flex",
-        justifyContent: "center",
       }}
     >
-      <Menu.Item key="hotel" icon={<HomeOutlined />}>
-        <Link to={"/hotel"}>Hotel</Link>
+      <Menu.Item key="home">
+        <Link to={"/"}>
+          <img src={logo} style={{ height: "30px" }} />
+        </Link>
+      </Menu.Item>
+      <Menu.Item
+        key="hotel"
+        icon={<HomeOutlined />}
+        style={{ textAlign: "center" }}
+      >
+        <Link to={"/hotel"} style={{ height: "80px" }}>
+          Hotel
+        </Link>
       </Menu.Item>
       <Menu.Item key="food" icon={<CoffeeOutlined />}>
         <Link to={"/food"}>Food</Link>
