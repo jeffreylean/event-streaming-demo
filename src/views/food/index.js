@@ -3,25 +3,38 @@ import {
   EnhancedEcommercePlugin,
   trackEnhancedEcommerceAction,
   addEnhancedEcommerceProductContext,
-  addEnhancedEcommerceActionContext
+  addEnhancedEcommerceActionContext,
 } from "@snowplow/browser-plugin-enhanced-ecommerce";
-import { newTracker, trackPageView } from "@snowplow/browser-tracker";
+import {
+  newTracker,
+  trackPageView,
+  enableActivityTracking,
+  ActivityTrackingConfiguration,
+  setUserId,
+} from "@snowplow/browser-tracker";
 import { useNavigate } from "react-router-dom";
 import {
   GeolocationPlugin,
-  enableGeolocationContext
+  enableGeolocationContext,
 } from "@snowplow/browser-plugin-geolocation";
+import { EcommercePlugin } from "@snowplow/browser-plugin-ecommerce";
 
-newTracker("ap1", "http://127.0.0.1:8080", {
+newTracker("ap1", "http://localhost:8080", {
   appId: "food",
   connectionTimeout: 100000,
-  stateStorageStrategy: "none",
-  plugins: [EnhancedEcommercePlugin(), GeolocationPlugin()]
+  //  stateStorageStrategy: "none",
+  plugins: [
+    EcommercePlugin(),
+    EnhancedEcommercePlugin(),
+    GeolocationPlugin(),
+    EcommercePlugin(),
+  ],
 });
+setUserId("jeffreylean@airasia.com");
 enableGeolocationContext();
-
+enableActivityTracking({ minimumVisitLength: 5, heartbeatDelay: 5 });
 trackPageView({
-  title: "Food Page"
+  title: "Food Page",
 });
 
 const Food = () => {
@@ -49,7 +62,7 @@ const Food = () => {
             style={{ width: 240, height: 300 }}
             onClick={() => {
               trackEnhancedEcommerceAction({
-                action: "click"
+                action: "click",
               });
               nav(`view/mcd`);
             }}
@@ -64,7 +77,7 @@ const Food = () => {
             style={{ width: 240, height: 300 }}
             onClick={() => {
               trackEnhancedEcommerceAction({
-                action: "click"
+                action: "click",
               });
               nav(`view/kfc`);
             }}

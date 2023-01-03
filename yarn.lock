@@ -1663,6 +1663,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
+"@snowplow/browser-plugin-ecommerce@^3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@snowplow/browser-plugin-ecommerce/-/browser-plugin-ecommerce-3.5.0.tgz#3edfb361524feea1dd0ea6e4200d66e658ccfadc"
+  integrity sha512-fbbFTiXFMST06g4fZirZFHap7AC04KAcOGU4fpMWaBADigDvIlhiMsOdvWqYSFM02u/Dr7lqxr0xyEWyR7MbEw==
+  dependencies:
+    "@snowplow/browser-tracker-core" "3.5.0"
+    "@snowplow/tracker-core" "3.5.0"
+    tslib "^2.3.1"
+
 "@snowplow/browser-plugin-enhanced-ecommerce@^3.3.1":
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/@snowplow/browser-plugin-enhanced-ecommerce/-/browser-plugin-enhanced-ecommerce-3.4.0.tgz#892062522fd0dfd32a252187211dda0bd367b07e"
@@ -1691,6 +1700,16 @@
     tslib "^2.3.1"
     uuid "^3.4.0"
 
+"@snowplow/browser-tracker-core@3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@snowplow/browser-tracker-core/-/browser-tracker-core-3.5.0.tgz#f274fbfc4cefb540c1eb6d1e6a5fb347614ef711"
+  integrity sha512-v6P7JLMa3fq6OfYn3I3PNH/Z9Rcxuw3SL1bOka4MVBKRqRlgt84yQHcvoOG4+00KaiKaTKznxAfH9sRalAkAbA==
+  dependencies:
+    "@snowplow/tracker-core" "3.5.0"
+    sha1 "^1.1.1"
+    tslib "^2.3.1"
+    uuid "^3.4.0"
+
 "@snowplow/browser-tracker@^3.3.0":
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/@snowplow/browser-tracker/-/browser-tracker-3.4.0.tgz#8d1b5df945d0d8872b97c470b00baa0aae0a6e7d"
@@ -1704,6 +1723,14 @@
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/@snowplow/tracker-core/-/tracker-core-3.4.0.tgz#688ddcbf7ebe894112d337532ee1473c703eb920"
   integrity sha512-HINAMZdvcQwIOZVVM8UtNZB2X33m7+gAIzDj3YQxvzphDUo7+GPCmmoVZmP9C2m6HovtBbKDX7slruvWFh+kcw==
+  dependencies:
+    tslib "^2.3.1"
+    uuid "^3.4.0"
+
+"@snowplow/tracker-core@3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@snowplow/tracker-core/-/tracker-core-3.5.0.tgz#16428ee05b2cbd33d09dd8a7f0a454f50fb3083f"
+  integrity sha512-5fMFNSNygrPvwhpM6dKIa79HMyhJ1WN77es06GduYyoyETsaEVW683QPANlXN6Iy8A2NlE3cy0Rlq1WGGIId6w==
   dependencies:
     tslib "^2.3.1"
     uuid "^3.4.0"

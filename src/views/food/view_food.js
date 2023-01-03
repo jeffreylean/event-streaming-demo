@@ -7,8 +7,14 @@ import { ShoppingCartOutlined } from "@ant-design/icons";
 import {
   addEnhancedEcommerceActionContext,
   addEnhancedEcommerceProductContext,
-  trackEnhancedEcommerceAction
+  trackEnhancedEcommerceAction,
 } from "@snowplow/browser-plugin-enhanced-ecommerce";
+import { trackSelfDescribingEvent } from "@snowplow/browser-tracker";
+import {
+  addItem,
+  addTrans,
+  trackTrans,
+} from "@snowplow/browser-plugin-ecommerce";
 
 const ViewFood = () => {
   const { foodId } = useParams();
@@ -22,7 +28,7 @@ const ViewFood = () => {
             style={{
               width: "100%",
               height: "100%",
-              objectFit: "cover"
+              objectFit: "cover",
             }}
             alt="food pic"
           ></img>
@@ -41,27 +47,43 @@ const ViewFood = () => {
                 <ShoppingCartOutlined
                   style={{ color: "red" }}
                   onClick={() => {
-                    addEnhancedEcommerceProductContext({
-                      id: "zinger_box",
-                      name: "Zinger Box",
-                      category: "Set",
-                      quantity: 1
-                    });
-
                     addEnhancedEcommerceActionContext({
                       id: "action_click",
-                      currency: "MYR"
+                      currency: "MYR",
                     });
 
                     trackEnhancedEcommerceAction({
-                      action: "click"
+                      action: "click",
+                      context: [
+                        {
+                          schema:
+                            "aliran:com.airasia/enhanced-ecommerce-productFieldObject/jsonschema/1-0-0",
+                          data: {
+                            id: "zinger_box",
+                            name: "Zinger Box",
+                            category: "Set",
+                            quantity: 1,
+                            dimension8: "test",
+                          },
+                        },
+                        {
+                          schema:
+                            "aliran:com.airasia/data_governance_metadata/jsonschema/1-0-0",
+                          data: {
+                            dataClassification: "C2",
+                            dataOwner: "jeffreylean@airasia.com",
+                            hasPII: false,
+                            dataCustodian: "data-coe",
+                          },
+                        },
+                      ],
                     });
                     notification.open({
                       message: "Successfully added to cart",
-                      icon: <ShoppingCartOutlined style={{ color: "red" }} />
+                      icon: <ShoppingCartOutlined style={{ color: "red" }} />,
                     });
                   }}
-                />
+                />,
               ]}
             >
               <Meta title="Zinger Box" description="Set box A" />
@@ -82,23 +104,23 @@ const ViewFood = () => {
                       id: "rice_plate",
                       name: "Rice Plate",
                       category: "Set",
-                      quantity: 1
+                      quantity: 1,
                     });
 
                     addEnhancedEcommerceActionContext({
                       id: "action_click",
-                      currency: "MYR"
+                      currency: "MYR",
                     });
 
                     trackEnhancedEcommerceAction({
-                      action: "click"
+                      action: "click",
                     });
                     notification.open({
                       message: "Successfully added to cart",
-                      icon: <ShoppingCartOutlined style={{ color: "red" }} />
+                      icon: <ShoppingCartOutlined style={{ color: "red" }} />,
                     });
                   }}
-                />
+                />,
               ]}
             >
               <Meta title="Rice plate" description="With rice" />
@@ -116,7 +138,7 @@ const ViewFood = () => {
             style={{
               width: "100%",
               height: "100%",
-              objectFit: "cover"
+              objectFit: "cover",
             }}
           ></img>
         </div>
@@ -140,25 +162,25 @@ const ViewFood = () => {
                           id: "double_spicy_chicken_mcdeluxe",
                           name: "Double spicy chicken mcDeluxe",
                           category: "Set",
-                          quantity: 1
+                          quantity: 1,
                         });
 
                         addEnhancedEcommerceActionContext({
                           id: "action_click",
-                          currency: "MYR"
+                          currency: "MYR",
                         });
 
                         trackEnhancedEcommerceAction({
-                          action: "click"
+                          action: "click",
                         });
                       });
                     }
                     notification.open({
                       message: "Successfully added to cart",
-                      icon: <ShoppingCartOutlined style={{ color: "red" }} />
+                      icon: <ShoppingCartOutlined style={{ color: "red" }} />,
                     });
                   }}
-                />
+                />,
               ]}
             >
               <Meta title="Double spicy chicken mcDeluxe" />
@@ -175,27 +197,38 @@ const ViewFood = () => {
                 <ShoppingCartOutlined
                   style={{ color: "red" }}
                   onClick={() => {
-                    addEnhancedEcommerceProductContext({
-                      id: "spicy_chicken_mcdeluxe",
-                      name: "Spicy chicken mcDeluxe",
-                      category: "Set",
-                      quantity: 1
+                    addTrans({
+                      orderId: "1234", // required
+                      total: 11.99, // required
+                      affiliation: "Acme Clothing",
+                      tax: 1.29,
+                      shipping: 5,
+                      city: "San Jose",
+                      state: "California",
+                      country: "USA",
+                      currency: "USD",
                     });
 
-                    addEnhancedEcommerceActionContext({
-                      id: "action_click",
-                      currency: "MYR"
+                    addItem({
+                      orderId: "1234", // required
+                      sku: "DD44", // required
+                      name: "spicy_chicken_mcdeluxe",
+                      category: "Set",
+                      price: 11.99,
+                      quantity: 1,
+                      currency: "MYR",
                     });
 
                     trackEnhancedEcommerceAction({
-                      action: "click"
+                      action: "click",
                     });
+                    trackTrans();
                     notification.open({
                       message: "Successfully added to cart",
-                      icon: <ShoppingCartOutlined style={{ color: "red" }} />
+                      icon: <ShoppingCartOutlined style={{ color: "red" }} />,
                     });
                   }}
-                />
+                />,
               ]}
             >
               <Meta title="Spicy chicken mcDeluxe" style={{ width: "100%" }} />
