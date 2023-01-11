@@ -32,7 +32,7 @@ newTracker("ap1", "http://localhost:8080", {
 });
 setUserId("jeffreylean@airasia.com");
 enableGeolocationContext();
-enableActivityTracking({ minimumVisitLength: 5, heartbeatDelay: 5 });
+enableActivityTracking({ minimumVisitLength: 10, heartbeatDelay: 10 });
 trackPageView({
   title: "Food Page",
 });

@@ -8,17 +8,17 @@ import {
   trackSelfDescribingEvent,
 } from "@snowplow/browser-tracker";
 
-newTracker("sp", "http://127.0.0.1:8080", {
-  appId: "flight",
-  discoverRootDomain: true,
-  cookieName: "airasia.com", // Recommended
-  contexts: {
-    webPage: true, // default, can be omitted
-    performanceTiming: true,
-    gaCookies: true,
-    geolocation: true,
-  },
-});
+//newTracker("sp", "http://127.0.0.1:8080", {
+//  appId: "flight",
+//  discoverRootDomain: true,
+//  cookieName: "airasia.com", // Recommended
+//  contexts: {
+//    webPage: true, // default, can be omitted
+//    performanceTiming: true,
+//    gaCookies: true,
+//    geolocation: true,
+//  },
+//});
 
 const Flight = () => {
   const [startDate, setStartDate] = useState("");
